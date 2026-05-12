@@ -1,0 +1,88 @@
+:root {
+    --neon-green: #39ff14;
+    --neon-orange: #ffae00;
+    --neon-purple: #bf00ff;
+    --neon-red: #ff073a;
+    --dark-bg: #0a0a0a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+body { background: var(--dark-bg); color: white; font-family: 'Courier New', Courier, monospace; overflow: hidden; height: 100vh; width: 100vw; }
+
+.screen { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; flex-direction: column; align-items: center; justify-content: center; background: var(--dark-bg); }
+.screen.active { display: flex; }
+
+.neon-green { color: var(--neon-green); text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green), 0 0 20px var(--neon-green); font-size: 3rem; margin-bottom: 20px; }
+.neon-red { color: var(--neon-red); text-shadow: 0 0 5px var(--neon-red), 0 0 10px var(--neon-red); font-size: 3rem; margin-bottom: 20px; }
+
+.neon-orange-btn { background: transparent; border: 2px solid var(--neon-orange); color: var(--neon-orange); padding: 15px 30px; font-size: 1.5rem; cursor: pointer; text-shadow: 0 0 5px var(--neon-orange); box-shadow: 0 0 10px var(--neon-orange); transition: 0.3s; border-radius: 5px; }
+.neon-orange-btn:hover { background: var(--neon-orange); color: black; }
+.neon-orange-btn:disabled { border-color: #555; color: #555; text-shadow: none; box-shadow: none; cursor: not-allowed; }
+
+.neon-purple-btn { background: transparent; border: 2px solid var(--neon-purple); color: var(--neon-purple); padding: 15px 30px; font-size: 1.5rem; cursor: pointer; text-shadow: 0 0 5px var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple); border-radius: 5px; }
+
+/* Starter */
+#starter-screen h2 { margin-bottom: 20px; }
+#starter-choices { display: flex; gap: 20px; margin-bottom: 20px; }
+.starter-card { border: 2px solid white; padding: 20px; cursor: pointer; font-size: 2rem; transition: 0.3s; border-radius: 10px; }
+.starter-card.selected { border-color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green); }
+#creature-name { margin: 20px 0; padding: 15px; background: #222; color: white; border: 1px solid #555; text-align: center; font-size: 1.2rem; width: 80%; border-radius: 5px; }
+
+/* Monde */
+#world-screen { justify-content: flex-start; }
+#world-canvas { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; }
+#world-ui { position: absolute; top: 10px; left: 10px; z-index: 2; background: rgba(0,0,0,0.8); padding: 15px; border-radius: 10px; width: 220px; border: 1px solid #333; }
+.bar { width: 100%; height: 18px; background: #333; margin: 5px 0; position: relative; border-radius: 9px; overflow: hidden; }
+.bar-fill { height: 100%; transition: width 0.3s; border-radius: 9px; }
+.bar-fill.hp { background: var(--neon-green); width: 100%; }
+.bar-fill.mp { background: #00bfff; width: 100%; }
+.bar span { position: absolute; top: 0; left: 0; width: 100%; text-align: center; font-size: 11px; line-height: 18px; font-weight: bold; text-shadow: 1px 1px 2px black; }
+
+/* Joystick */
+#joystick-zone { position: absolute; bottom: 80px; left: 30px; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 3px solid rgba(255,255,255,0.4); z-index: 2; box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+#joystick-thumb { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.8), rgba(200,200,200,0.4)); border: 2px solid white; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
+.bottom-btn { position: absolute; bottom: 15px; width: 90%; left: 5%; z-index: 2; padding: 15px; background: #222; color: white; border: 2px solid var(--neon-orange); border-radius: 10px; font-size: 1.2rem; cursor: pointer; text-transform: uppercase; font-weight: bold; }
+
+/* Wallet Screen */
+#wallet-screen { background: #111; z-index: 10; }
+#wallet-infos { margin: 30px 0; font-size: 1.5rem; text-align: center; line-height: 2; }
+
+/* Combat */
+#battle-screen { justify-content: flex-start; background: #111; }
+#battle-arena { width: 100%; height: 45%; position: relative; z-index: 1; }
+#battle-canvas { width: 100%; height: 100%; }
+#battle-effects { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+
+#battle-ui { height: 55%; width: 100%; background: linear-gradient(to bottom, #222, #111); z-index: 2; display: flex; flex-direction: column; padding: 10px; border-top: 2px solid #555; }
+.b-stats { width: 100%; margin-bottom: 5px; }
+#b-player-stats { float: left; width: 45%; }
+#b-enemy-stats { float: right; width: 45%; text-align: right; }
+#battle-log { height: 50px; overflow-y: auto; background: #000; padding: 5px; margin: 10px 0; border: 1px solid #444; font-size: 0.9rem; clear: both; border-radius: 5px; }
+#battle-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.action-btn { background: #333; color: white; border: 1px solid #555; padding: 12px; cursor: pointer; font-family: inherit; border-radius: 5px; font-size: 1rem; }
+.action-btn:active { background: #555; }
+.restore-btn { grid-column: span 2; border-color: var(--neon-green); color: var(--neon-green); }
+.back-btn { background: #8b0000; border-radius: 5px; }
+.hidden { display: none !important; }
+#sub-menu { grid-column: span 2; background: #111; padding: 10px; border: 1px solid white; max-height: 180px; overflow-y: auto; border-radius: 5px; }
+#sub-menu-list button { display: block; width: 100%; text-align: left; background: none; border: none; color: white; padding: 8px; cursor: pointer; font-family: inherit; font-size: 1rem; }
+#sub-menu-list button:hover { background: #333; }
+
+/* Animations Combat */
+.claw-attack {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g stroke="white" stroke-width="4" fill="none"><path d="M20,80 L50,20"/><path d="M40,80 L50,20"/><path d="M60,80 L50,20"/></g></svg>') no-repeat center/60%;
+    animation: slashAnim 0.4s ease-out forwards;
+    filter: drop-shadow(0 0 5px white);
+}
+.lightning-attack {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    animation: flashAnim 0.5s ease-out forwards;
+}
+@keyframes slashAnim { 0% { opacity: 0; transform: scale(0.5); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0; transform: scale(1.2); } }
+@keyframes flashAnim { 0% { opacity: 0.7; } 20% { opacity: 0; } 40% { opacity: 0.9; } 100% { opacity: 0; } }
+
+/* Game Over */
+#gameover-screen { background: black; }

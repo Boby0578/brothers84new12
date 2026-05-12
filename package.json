@@ -1,0 +1,10 @@
+{
+  "name": "brothers84-monster-quest",
+  "version": "1.0.0",
+  "description": "Telegram Mini App - Pokémon-like Game by Brothers84",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Build static'"
+  }
+}

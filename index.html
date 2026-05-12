@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brothers84 - Monster Quest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ECRAN TITRE -->
+    <div id="title-screen" class="screen active">
+        <h1 class="neon-green">Brothers84</h1>
+        <button id="start-btn" class="neon-orange-btn">START</button>
+    </div>
+
+    <!-- ECRAN CHOIX STARTER -->
+    <div id="starter-screen" class="screen">
+        <h2>Choisis ta créature</h2>
+        <div id="starter-choices">
+            <div class="starter-card" data-type="fire"> Feu</div>
+            <div class="starter-card" data-type="water"> Eau</div>
+            <div class="starter-card" data-type="plant"> Plante</div>
+        </div>
+        <input type="text" id="creature-name" placeholder="Nom de la créature" maxlength="12">
+        <button id="confirm-starter" class="neon-orange-btn">Confirmer</button>
+    </div>
+
+    <!-- ECRAN MONDE -->
+    <div id="world-screen" class="screen">
+        <canvas id="world-canvas"></canvas>
+        <div id="world-ui">
+            <div id="player-info">Lvl <span id="ui-lvl">1</span> - <span id="ui-name"></span></div>
+            <div id="ui-hp-bar" class="bar"><div class="bar-fill hp"></div><span>200/200</span></div>
+            <div id="ui-mp-bar" class="bar"><div class="bar-fill mp"></div><span>100/100</span></div>
+        </div>
+        <div id="joystick-zone">
+            <div id="joystick-thumb"></div>
+        </div>
+        <button id="world-wallet-btn" class="bottom-btn">Wallet & Retrait</button>
+    </div>
+
+    <!-- ECRAN WALLET -->
+    <div id="wallet-screen" class="screen">
+        <h2>Mon Portefeuille</h2>
+        <div id="wallet-infos">
+            <p>Publicités regardées : <span id="w-ads">0</span></p>
+            <p>Gain accumulé : <span id="w-money">0.000</span> $</p>
+        </div>
+        <button id="withdraw-btn" class="neon-orange-btn" disabled>Retirer l'argent (Min 1$)</button>
+        <button id="wallet-back-btn" class="back-btn action-btn">Retour</button>
+    </div>
+
+    <!-- ECRAN COMBAT -->
+    <div id="battle-screen" class="screen">
+        <div id="battle-arena">
+            <canvas id="battle-canvas"></canvas>
+            <div id="battle-effects"></div>
+        </div>
+        <div id="battle-ui">
+            <div id="b-player-stats" class="b-stats">
+                <h3 id="b-p-name"></h3>
+                <div class="bar"><div class="bar-fill hp"></div><span class="hp-txt"></span></div>
+                <div class="bar"><div class="bar-fill mp"></div><span class="mp-txt"></span></div>
+            </div>
+            <div id="b-enemy-stats" class="b-stats">
+                <h3 id="b-e-name"></h3>
+                <div class="bar"><div class="bar-fill hp"></div><span class="hp-txt"></span></div>
+                <div class="bar"><div class="bar-fill mp"></div><span class="mp-txt"></span></div>
+            </div>
+            <div id="battle-log"></div>
+            <div id="battle-actions">
+                <button class="action-btn" id="btn-attack">Attaque</button>
+                <button class="action-btn" id="btn-magic">Magie</button>
+                <button class="action-btn" id="btn-inventory">Inventaire</button>
+                <button class="action-btn" id="btn-symbols">Symboles</button>
+                <button class="action-btn restore-btn" id="btn-restore">Restore (Pub)</button>
+            </div>
+            <div id="sub-menu" class="hidden">
+                <div id="sub-menu-list"></div>
+                <button class="action-btn back-btn" id="btn-back">Retour</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ECRAN GAME OVER -->
+    <div id="gameover-screen" class="screen">
+        <h1 class="neon-red">GAME OVER</h1>
+        <button id="revive-btn" class="neon-purple-btn">Revive (10 Pubs)</button>
+    </div>
+
+    <!-- Scripts publicitaires -->
+    <script src='//libtl.com/sdk.js' data-zone='10997672' data-sdk='show_10997672'></script>
+    <script src="script.js"></script>
+</body>
+</html>
